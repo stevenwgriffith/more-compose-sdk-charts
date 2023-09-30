@@ -1,1 +1,2 @@
-export * from "./Button";
+export * from "./Histogram";
+export * from "./HistogramChart";
