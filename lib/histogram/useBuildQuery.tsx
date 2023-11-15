@@ -2,7 +2,7 @@ import {
   filters as filterFactory,
   measures as measureFactory,
 } from "@sisense/sdk-data";
-import type { Filter, Measure, QueryResultData } from "@sisense/sdk-data";
+import type { DataSource, Filter, Measure, QueryResultData } from "@sisense/sdk-data";
 import { useMemo } from "react";
 import type { HistogramDataOptions, HistogramStyleOptions } from "../Histogram";
 
@@ -20,11 +20,13 @@ const binLabel = (min: number, max: number, precision = 6) => {
 
 // Widget plug-in buildQuery: git bin frequency per cateogry
 export const useBuildQuery = ({
+  dataSource,
   minMaxData,
   dataOptions,
   filters,
   styleOptions,
 }: {
+  dataSource?: DataSource,
   minMaxData?: QueryResultData;
   dataOptions: HistogramDataOptions;
   filters?: Filter[];
@@ -86,6 +88,7 @@ export const useBuildQuery = ({
   }
 
   return {
+    dataSource,
     measures: binMeasures,
     filters,
     dimensions: dataOptions.category,

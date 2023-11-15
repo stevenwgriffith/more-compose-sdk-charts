@@ -1,15 +1,17 @@
 import {
   measures as measureFactory,
 } from "@sisense/sdk-data";
-import type { Filter } from "@sisense/sdk-data";
+import type { DataSource, Filter } from "@sisense/sdk-data";
 import { useMemo } from "react";
 import type { HistogramDataOptions } from "../Histogram";
 
 // Widget plug-in buildQuery: get min max count
 export const useBuildMinMaxQuery = ({
+  dataSource,
   dataOptions,
   filters,
 }: {
+  dataSource?: DataSource,
   dataOptions: HistogramDataOptions;
   filters?: Filter[];
 }) => {
@@ -27,10 +29,11 @@ export const useBuildMinMaxQuery = ({
   );
   const minMaxQueryProps = useMemo(
     () => ({
+      dataSource,
       measures: [minMeas, maxMeas, countMeas],
       filters,
     }),
-    [minMeas, maxMeas, countMeas, filters]
+    [dataSource, minMeas, maxMeas, countMeas, filters]
   );
   return minMaxQueryProps;
 };

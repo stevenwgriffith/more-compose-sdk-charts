@@ -37,12 +37,13 @@ export type HistogramProps = {
 };
 
 export const Histogram = ({
+  dataSource,
   dataOptions,
   filters,
   styleOptions,
 }: HistogramProps) => {
   // Widget plug-in buildQuery: get min max count per category
-  const minMaxQueryProps = useBuildMinMaxQuery({ dataOptions, filters })
+  const minMaxQueryProps = useBuildMinMaxQuery({ dataSource, dataOptions, filters })
 
   const {
     data: minMaxData,
@@ -52,6 +53,7 @@ export const Histogram = ({
 
   // Widget plug-in buildQuery: get bin frequrency data per bin and cateogry
   const frequencyDataQueryProps = useBuildQuery({
+    dataSource,
     minMaxData,
     dataOptions,
     filters,
