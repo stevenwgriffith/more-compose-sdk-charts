@@ -1,5 +1,11 @@
 # compote
 
+## 0.0.2
+
+### Patch Changes
+
+- c3d7057: Initial release
+
 ## 0.3.2
 
 ### Patch Changes
