@@ -1,5 +1,11 @@
 # compote
 
+## 0.0.3
+
+### Patch Changes
+
+- 99c59ad: Initial release
+
 ## 0.3.2
 
 ### Patch Changes
