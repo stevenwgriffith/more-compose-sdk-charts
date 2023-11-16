@@ -1,5 +1,11 @@
 # compote
 
+## 0.0.4
+
+### Patch Changes
+
+- f588ca6: Initial Release
+
 ## 0.0.3
 
 ### Patch Changes
