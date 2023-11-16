@@ -1,5 +1,11 @@
 # compote
 
+## 0.0.2
+
+### Patch Changes
+
+- a80f09c: Initial release
+
 ## 0.3.2
 
 ### Patch Changes
