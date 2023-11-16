@@ -1,6 +1,5 @@
 {
   "name": "@stevenwgriffith/more-compose-sdk-charts",
-  "license": "MIT",
   "version": "0.0.3",
   "type": "module",
   "main": "dist/index.cjs",
