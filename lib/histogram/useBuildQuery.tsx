@@ -1,6 +1,6 @@
 import {
-  filters as filterFactory,
-  measures as measureFactory,
+  filterFactory,
+  measureFactory,
 } from "@sisense/sdk-data";
 import type { DataSource, Filter, Measure, QueryResultData } from "@sisense/sdk-data";
 import { useMemo } from "react";

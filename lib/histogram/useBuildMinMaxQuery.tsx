@@ -1,5 +1,5 @@
 import {
-  measures as measureFactory,
+  measureFactory,
 } from "@sisense/sdk-data";
 import type { DataSource, Filter } from "@sisense/sdk-data";
 import { useMemo } from "react";
