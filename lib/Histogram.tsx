@@ -8,13 +8,12 @@ import type {
   BaseStyleOptions,
   ValueToColorMap,
 } from "@sisense/sdk-ui";
-import { useExecuteQuery } from "@sisense/sdk-ui";
+import { getDefaultThemeSettings, useExecuteQuery } from "@sisense/sdk-ui";
+import { LoadingOverlay } from './common/loading-overlay';
 import { useBuildQuery } from "./histogram/useBuildQuery";
 import { FREQUENCY, useProcessResults } from "./histogram/useProcessResults";
 import { HistogramChart } from "./HistogramChart";
 import { useBuildMinMaxQuery } from "./histogram/useBuildMinMaxQuery";
-import { useThemeContext } from "@sisense/sdk-ui/dist/theme-provider";
-import { LoadingOverlay } from '@sisense/sdk-ui/dist/common/components/loading-overlay';
 import styles from './Histogram.module.css';
 
 export interface HistogramStyleOptions
@@ -38,6 +37,7 @@ export type HistogramProps = {
   filters?: Filter[];
   styleOptions?: HistogramStyleOptions;
 };
+const themeSettings = getDefaultThemeSettings();
 
 export const Histogram = ({
   dataSource,
@@ -45,7 +45,6 @@ export const Histogram = ({
   filters,
   styleOptions,
 }: HistogramProps) => {
-  const { themeSettings } = useThemeContext();
 
   // Widget plug-in buildQuery: get min max count per category
   const minMaxQueryProps = useBuildMinMaxQuery({ dataSource, dataOptions, filters })
