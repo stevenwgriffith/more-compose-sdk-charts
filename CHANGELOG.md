@@ -1,5 +1,13 @@
 # compote
 
+## 1.0.1
+
+### Patch Changes
+
+- 14ac75a: Added loading overlay
+- f869dd7: fix css issues
+- d8751c5: Updating to compose sdk 1.x.x
+
 ## 0.0.4
 
 ### Patch Changes
