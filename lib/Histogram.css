@@ -1,0 +1,18 @@
+.histogramPanel {
+    margin-top: 50px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: absolute;
+}
+
+.histogramEmptyArea {
+    margin: 20px;
+    margin-top: 0px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: absolute;
+}

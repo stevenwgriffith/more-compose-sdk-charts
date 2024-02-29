@@ -13,6 +13,9 @@ import { useBuildQuery } from "./histogram/useBuildQuery";
 import { FREQUENCY, useProcessResults } from "./histogram/useProcessResults";
 import { HistogramChart } from "./HistogramChart";
 import { useBuildMinMaxQuery } from "./histogram/useBuildMinMaxQuery";
+import { useThemeContext } from "@sisense/sdk-ui/dist/theme-provider";
+import { LoadingOverlay } from '@sisense/sdk-ui/dist/common/components/loading-overlay';
+import './Histogram.css';
 
 export interface HistogramStyleOptions
   extends BaseStyleOptions,
@@ -42,6 +45,8 @@ export const Histogram = ({
   filters,
   styleOptions,
 }: HistogramProps) => {
+  const { themeSettings } = useThemeContext();
+
   // Widget plug-in buildQuery: get min max count per category
   const minMaxQueryProps = useBuildMinMaxQuery({ dataSource, dataOptions, filters })
 
@@ -80,16 +85,32 @@ export const Histogram = ({
     [dataOptions.value, dataOptions.seriesToColorMap, dataOptions.category]
   );
 
-  if (!minMaxData || isMinMaxLoading) return <div>{"loading"}</div>;
-  if (isMinMaxError) return <div>{isMinMaxError}</div>;
-  if (!binData || isLoading || !histogramData) return <div>{"loading"}</div>;
-  if (error) return <div>{error}</div>;
-
+  if (isMinMaxError) return <div>{`${isMinMaxError}`}</div>;
+  if (error) return <div>{`${error}`}</div>;
+  const panelBackgroundColor = themeSettings?.chart.panelBackgroundColor
+    ? themeSettings.chart.panelBackgroundColor
+    : 'white';
   return (
-    <HistogramChart
-      dataSet={histogramData}
-      dataOptions={histogramChartDataOptions}
-      styleOptions={styleOptions}
-    />
+    <div
+      className={'histogramPanel'}
+    >
+      <LoadingOverlay themeSettings={themeSettings} isVisible={isMinMaxLoading || isLoading}>
+        {binData && (
+          <HistogramChart
+            dataSet={histogramData}
+            dataOptions={histogramChartDataOptions}
+            styleOptions={styleOptions}
+          />
+        )}
+        {!binData && (
+          <div
+            className={'histogramEmptyArea'}
+            style={{
+              backgroundColor: `${panelBackgroundColor}`,
+            }}
+          ></div>
+        )}
+      </LoadingOverlay>
+    </div>
   );
 };
