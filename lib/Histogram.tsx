@@ -15,7 +15,7 @@ import { HistogramChart } from "./HistogramChart";
 import { useBuildMinMaxQuery } from "./histogram/useBuildMinMaxQuery";
 import { useThemeContext } from "@sisense/sdk-ui/dist/theme-provider";
 import { LoadingOverlay } from '@sisense/sdk-ui/dist/common/components/loading-overlay';
-import './Histogram.css';
+import styles from './Histogram.module.css';
 
 export interface HistogramStyleOptions
   extends BaseStyleOptions,
@@ -92,7 +92,7 @@ export const Histogram = ({
     : 'white';
   return (
     <div
-      className={'histogramPanel'}
+      className={styles.histogramPanel}
     >
       <LoadingOverlay themeSettings={themeSettings} isVisible={isMinMaxLoading || isLoading}>
         {binData && (
@@ -104,7 +104,7 @@ export const Histogram = ({
         )}
         {!binData && (
           <div
-            className={'histogramEmptyArea'}
+            className={styles.histogramEmptyArea}
             style={{
               backgroundColor: `${panelBackgroundColor}`,
             }}
