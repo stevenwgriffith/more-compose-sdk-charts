@@ -15,7 +15,7 @@ import type { HistogramStyleOptions } from "./Histogram";
 export type HistogramChartStyleOptions = HistogramStyleOptions;
 
 export interface HistogramChartDataOptions {
-  fequency: MeasureColumn;
+  frequency: MeasureColumn;
   bins: Column;
   breakBy: Column[];
   seriesToColorMap?: ValueToColorMap;
@@ -75,7 +75,7 @@ export const HistogramChart = ({
   const columnChartDataOptions = useMemo(
     () => ({
       category: [dataOptions.bins],
-      value: [dataOptions.fequency],
+      value: [dataOptions.frequency],
       breakBy: dataOptions.breakBy,
       seriesToColorMap: dataOptions.seriesToColorMap,
     }),

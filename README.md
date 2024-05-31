@@ -9,4 +9,11 @@ Demo: https://csdk-react.sisense.com/extensions
 
 The code for the components are in './lib' folder.
 
+Note this requires @sisense/sdk-ui and @sisense/sdk-data version 1.11.x or higher.
 
+## Updating
+Generate changeset by running:
+
+npx changeset
+
+Then commit the changeset log to trigger the GitHub Action.
