@@ -1,7 +1,7 @@
-import { test, expect, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import { welcomeMessage } from "./utils";
 
-test("utils", () => {
+describe("utils", () => {
   it("should return a welcome message", () => {
     expect(welcomeMessage("John")).toBe("Hello John, Welcome to PBandJ!");
   });

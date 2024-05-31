@@ -14,6 +14,7 @@ import { useBuildQuery } from "./histogram/useBuildQuery";
 import { FREQUENCY, useProcessResults } from "./histogram/useProcessResults";
 import { HistogramChart } from "./HistogramChart";
 import { useBuildMinMaxQuery } from "./histogram/useBuildMinMaxQuery";
+import { useThemeContext } from "@sisense/sdk-ui";
 import styles from './Histogram.module.css';
 
 export interface HistogramStyleOptions
@@ -37,7 +38,6 @@ export type HistogramProps = {
   filters?: Filter[];
   styleOptions?: HistogramStyleOptions;
 };
-const themeSettings = getDefaultThemeSettings();
 
 export const Histogram = ({
   dataSource,
@@ -45,6 +45,7 @@ export const Histogram = ({
   filters,
   styleOptions,
 }: HistogramProps) => {
+  const { themeSettings } = useThemeContext();
 
   // Widget plug-in buildQuery: get min max count per category
   const minMaxQueryProps = useBuildMinMaxQuery({ dataSource, dataOptions, filters })
@@ -77,7 +78,7 @@ export const Histogram = ({
   const histogramChartDataOptions = useMemo(
     () => ({
       bins: dataOptions.value,
-      fequency: { name: FREQUENCY },
+      frequency: { name: FREQUENCY },
       breakBy: dataOptions.category,
       seriesToColorMap: dataOptions.seriesToColorMap,
     }),
@@ -90,26 +91,22 @@ export const Histogram = ({
     ? themeSettings.chart.panelBackgroundColor
     : 'white';
   return (
-    <div
-      className={styles.histogramPanel}
-    >
-      <LoadingOverlay themeSettings={themeSettings} isVisible={isMinMaxLoading || isLoading}>
-        {binData && (
-          <HistogramChart
-            dataSet={histogramData}
-            dataOptions={histogramChartDataOptions}
-            styleOptions={styleOptions}
-          />
-        )}
-        {!binData && (
-          <div
-            className={styles.histogramEmptyArea}
-            style={{
-              backgroundColor: `${panelBackgroundColor}`,
-            }}
-          ></div>
-        )}
-      </LoadingOverlay>
-    </div>
+    <LoadingOverlay themeSettings={themeSettings} isVisible={isMinMaxLoading || isLoading}>
+      {binData && (
+        <HistogramChart
+          dataSet={histogramData}
+          dataOptions={histogramChartDataOptions}
+          styleOptions={styleOptions}
+        />
+      )}
+      {!binData && (
+        <div
+        className={styles.histogramEmptyArea}
+        style={{
+          backgroundColor: `${panelBackgroundColor}`,
+        }}
+        ></div>
+      )}
+    </LoadingOverlay>
   );
 };
