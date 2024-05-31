@@ -12,13 +12,13 @@ const meta = {
 
 const dataOptions = {
   bins: { name: "bins", type: "string" },
-  fequency: { name: "frequency" },
+  frequency: { name: "frequency" },
   breakBy: [],
 };
 
 const dataOptionsBreakBy = {
   bins: { name: "bins", type: "string" },
-  fequency: { name: "frequency" },
+  frequency: { name: "frequency" },
   breakBy: [{ name: "group", type: "string" }],
 };
 
