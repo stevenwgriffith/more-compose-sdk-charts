@@ -1,5 +1,12 @@
 # compote
 
+## 1.0.4
+
+### Patch Changes
+
+- 103de53: fixing spelling of frequency HistogramChart property
+- 27513c3: fix storybook
+
 ## 1.0.2
 
 ### Patch Changes
